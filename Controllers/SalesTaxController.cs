@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Authorization;
+using SalesTaxService.Models;
 
 namespace SalesTaxService.Controllers
 {
@@ -66,7 +67,7 @@ namespace SalesTaxService.Controllers
                 TotalExcludingTax = totalExcludingTax,
                 CostCentre = costCentre,
                 TaxRate = taxRate,
-                message = $"Sales tax has been calculated at {taxRate * 100}%. Total includes tax and has been split accordingly."
+                Message = $"Sales tax has been calculated at {taxRate * 100}%. Total includes tax and has been split accordingly."
 
                // message = "Sales tax has been calculated at "+taxRate+"%. Total includes tax and has been split accordingly."
             };
@@ -75,19 +76,5 @@ namespace SalesTaxService.Controllers
         }
     }
 
-    public class InputModel
-    {
-        public string Text { get; set; } = string.Empty;
-        public decimal TaxRate { get; set; } = 10;
-    }
-
-    public class ResponseModel
-    {
-        public decimal TotalIncludingTax { get; set; }
-        public decimal SalesTax { get; set; }
-        public decimal TotalExcludingTax { get; set; }
-        public string CostCentre { get; set; } = string.Empty;
-        public decimal TaxRate { get; set; } = 0.1m;
-        public string message { get; set; } = string.Empty;
-    }
+    
 }
