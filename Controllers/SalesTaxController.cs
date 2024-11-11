@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Text.RegularExpressions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SalesTaxService.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(AuthenticationSchemes = "BasicAuthentication")]
     public class SalesTaxController : ControllerBase
     {
         [HttpPost("calculate")]
